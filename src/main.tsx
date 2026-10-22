@@ -9,8 +9,10 @@ if (params.get('static') === '1' || reduceMotion) {
   document.documentElement.classList.add('zx-static')
 }
 
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '')
+
 createRoot(document.getElementById('root')!).render(
-  <BrowserRouter>
+  <BrowserRouter basename={basename || undefined}>
     <App />
   </BrowserRouter>,
 )
