@@ -3,6 +3,16 @@
 面向中学的 AI 个性化学习与教学协同平台，前端可点击预览。  
 本版统一为 **学生、家长、教师、管理者** 四种身份；新增 AI 课程学习、管理者课程发布、平台流量监控、分组侧边栏和手机端“更多”导航。已预留可替换的 API 层，方便后续接后端。
 
+## 在线预览
+
+**https://characterrestick.github.io/zhixu-preview-demo/**
+
+公开演示仓库存放构建产物；源码在当前私有仓库。GitHub Pages 构建使用：
+
+```bash
+node node_modules/vite/bin/vite.js build --base=/zhixu-preview-demo/ --outDir dist-pages
+```
+
 ## 本地运行
 
 ```bash
