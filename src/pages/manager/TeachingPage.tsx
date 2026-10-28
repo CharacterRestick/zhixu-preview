@@ -62,7 +62,7 @@ export function TeachingPage() {
             ))}
           </div>
           <div className="zx-lesson-foot">
-            <div className="zx-lesson-ai"><Sparkles size={15} /> AI 已根据班级迷思调整“分层任务”的顺序。</div>
+            <div className="zx-lesson-ai"><Sparkles size={15} /> 系统已根据班级迷思调整“分层任务”的顺序。</div>
             <Button variant="secondary" size="sm" onClick={() => toast('教案已进入教师终审')}>
               进入终审 <ArrowRight size={15} />
             </Button>
@@ -115,7 +115,7 @@ export function TeachingPage() {
       <Card className="zx-summary-card">
         <div className="zx-summary-icon"><MessageSquareText size={20} /></div>
         <div>
-          <span className="zx-eyebrow light">AI CLASS SUMMARY</span>
+          <span className="zx-eyebrow light">CLASS SUMMARY</span>
           <h3>今天这节课，值得留到明天的三句话</h3>
           <p>{data.summary}</p>
         </div>

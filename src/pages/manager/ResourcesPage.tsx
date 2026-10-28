@@ -20,7 +20,7 @@ export function ResourcesPage() {
       <PageHeader
         eyebrow="RESOURCE CENTER · 课程与资源"
         title="好资源，先审后用。"
-        description="每份资源都有“内容营养标签”：课标对齐、认知层级、AI 参与度、审核人与版本。教师选得明白，学校管得住。"
+        description="每份资源都有“内容营养标签”：课标对齐、认知层级、智能参与度、审核人与版本。教师选得明白，学校管得住。"
         actions={
           <>
             <Button variant="secondary" size="sm" onClick={() => toast('已打开审核队列：2 份待审')}>
@@ -78,7 +78,7 @@ export function ResourcesPage() {
         <div>
           <span className="zx-eyebrow">CONTENT NUTRITION LABEL</span>
           <h3>每个资源，都有一张“营养标签”</h3>
-          <p>课标对齐 · 认知层级 · 证据基础 · AI 参与度 · 审核人 · 版本。教师可以按“AI 参与度”“版权类型”筛选，学校可以追溯每一次修改。</p>
+          <p>课标对齐 · 认知层级 · 证据基础 · 智能参与度 · 审核人 · 版本。教师可以按“智能参与度”“版权类型”筛选，学校可以追溯每一次修改。</p>
         </div>
         <button onClick={() => toast('内容营养标签说明会在接后端后开放')}>
           <FolderOpen size={16} /> 了解标签

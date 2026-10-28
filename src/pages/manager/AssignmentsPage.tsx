@@ -19,7 +19,7 @@ export function AssignmentsPage() {
     <div className="zx-page">
       <PageHeader
         eyebrow="ASSIGNMENTS · 作业与学情"
-        title="AI 预批，教师终审。"
+        title="智能预批，教师终审。"
         description="批改重复劳动交给 AI，评价权仍然在教师手里。先看共性错因，再决定讲什么。"
         actions={
           <>
@@ -53,7 +53,7 @@ export function AssignmentsPage() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.08 + index * 0.06 }}
             >
-              <div><strong>{batch.title}</strong><small>AI 预批 · 教师终审</small></div>
+              <div><strong>{batch.title}</strong><small>智能预批 · 教师终审</small></div>
               <span>{batch.className}</span>
               <span>{batch.submitted} / {batch.total}</span>
               <span>
@@ -93,7 +93,7 @@ export function AssignmentsPage() {
 
         <Card className="zx-precheck-card">
           <div className="zx-precheck-icon"><Sparkles size={20} /></div>
-          <span className="zx-eyebrow">AI PRE-CHECK</span>
+          <span className="zx-eyebrow">SMART PRE-CHECK</span>
           <h3>预批不是“替教师打分”</h3>
           <p>{data.feedback}</p>
           <div className="zx-precheck-stats">

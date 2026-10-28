@@ -67,7 +67,7 @@ export function TutorPage() {
   return (
     <div className="zx-page">
       <PageHeader
-        eyebrow="AI TUTOR · 小序"
+        eyebrow="LEARNING TUTOR · 小序"
         title="先说说你的想法。"
         description="小序不会抢走你的思考。它会追问、给提示、等你回讲；练习和测评时，答案锁默认开启。"
         actions={

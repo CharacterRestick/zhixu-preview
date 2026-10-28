@@ -97,7 +97,7 @@ export function TrafficPage() {
       <PageHeader
         eyebrow="PLATFORM OPS · 管理者"
         title="流量、成本、延迟，一页看清。"
-        description="监控页面、API、AI 导师、视频与导出任务的用量。这里只做观测和预警，不展示学生个人内容。"
+        description="监控页面、API、学习导师、视频与导出任务的用量。这里只做观测和预警，不展示学生个人内容。"
         actions={
           <>
             <div className="zx-range-toggle">

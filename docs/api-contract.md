@@ -136,7 +136,7 @@ POST /api/v1/family/bind
 |---|---|---|---|
 | GET | `/student/dashboard` | 学生首页 | 学生 |
 | GET | `/student/learning-map` | 学习地图 | 学生 |
-| GET | `/student/tutor/session` | AI 导师会话 | 学生 |
+| GET | `/student/tutor/session` | 学习导师会话 | 学生 |
 | POST | `/student/tutor/messages` | 发送消息 | 学生 |
 | GET | `/student/subject-analysis` | 学生学科分析 | 学生 |
 | GET | `/student/growth` | 项目与成长 | 学生 |
@@ -275,7 +275,7 @@ interface TrafficData {
 
 监控只统计聚合指标：请求量、带宽、AI token、存储、延迟、错误率、成本。**不记录学生对话原文，不按学生个人做行为分析。**
 
-### AI 导师流式（后续）
+### 学习导师流式（后续）
 
 ```text
 POST /api/v1/student/tutor/messages/stream

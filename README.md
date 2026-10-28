@@ -164,6 +164,11 @@ GET  /manager/assignments
 GET  /manager/subject-analysis
 GET  /manager/class-hours
 GET  /manager/resources
+GET  /manager/schedule
+GET  /manager/teachers
+POST /manager/teachers
+PATCH /manager/teachers/:id
+PATCH /manager/teachers/:id/status
 GET  /courses?audience=student
 GET  /manager/courses
 POST /manager/courses

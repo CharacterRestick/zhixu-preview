@@ -50,7 +50,7 @@ function Page({ children }: { children: ReactNode }) {
 const studentNav: NavItem[] = [
   { to: '/student', label: '今天', icon: Home, end: true, permission: 'student.home', section: 'learn' },
   { to: '/student/map', label: '学习地图', icon: Map, permission: 'student.map', section: 'learn' },
-  { to: '/student/tutor', label: 'AI 导师', icon: Sparkles, permission: 'student.tutor', section: 'learn' },
+  { to: '/student/tutor', label: '学习导师', icon: Sparkles, permission: 'student.tutor', section: 'learn' },
   { to: '/student/analysis', label: '学科分析', icon: BarChart3, permission: 'student.analysis', section: 'learn' },
   { to: '/student/growth', label: '项目与成长', icon: Trophy, permission: 'student.growth', section: 'learn' },
   { to: '/student/courses', label: 'AI 课程', icon: Video, permission: 'student.courses', section: 'learn', badge: 'AI' },

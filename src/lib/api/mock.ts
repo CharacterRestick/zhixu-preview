@@ -199,7 +199,7 @@ const managerDashboard: ManagerDashboard = {
     { label: '语文', value: 94, total: 100, tone: 'violet' },
   ],
   todos: [
-    { title: '审核 6 份校本资源', detail: '其中 2 份涉及 AI 生成内容，需要重点看引用', tag: '今天' },
+    { title: '审核 6 份校本资源', detail: '其中 2 份涉及 智能生成内容，需要重点看引用', tag: '今天' },
     { title: '确认下周调课', detail: '数学组 2 位老师涉及代课，课时统计待更新', tag: '待处理' },
     { title: '准备学科分析会', detail: '周五前整理八年级“图像平移”共性问题', tag: '本周' },
   ],
@@ -211,7 +211,7 @@ const teachingData: TeachingData = {
     subject: '数学',
     grade: '八年级 · 3 班',
     objective: '能根据 k、b 判断图像位置与增减性，并用图像解释实际问题。',
-    status: 'AI 初稿 · 待教师终审',
+    status: '系统初稿 · 待教师终审',
     blocks: [
       { label: '情境导入', detail: '用校园照明用电账单引出“两个变量之间的关系”。', duration: '5 分钟' },
       { label: '图像探究', detail: '分组画 y = 2x + 1 与 y = 2x - 3，比较平行与平移。', duration: '12 分钟' },
@@ -234,7 +234,7 @@ const teachingData: TeachingData = {
 
 const assignmentData: AssignmentData = {
   batches: [
-    { title: '一次函数 · 分层作业', className: '八年级 3 班', submitted: 42, total: 45, status: 'AI 预批中', tone: 'teal' },
+    { title: '一次函数 · 分层作业', className: '八年级 3 班', submitted: 42, total: 45, status: '智能预批中', tone: 'teal' },
     { title: '电路图识别 · 周末练习', className: '八年级 3 班', submitted: 45, total: 45, status: '待教师终审', tone: 'amber' },
     { title: '方程式配平 · 错题重做', className: '八年级 2 班', submitted: 38, total: 44, status: '已终审', tone: 'blue' },
   ],
@@ -243,7 +243,7 @@ const assignmentData: AssignmentData = {
     { title: '斜率符号判断', detail: 'k < 0 时仍判断为上升，集中在第 3、5 题。', ratio: 21, tone: 'amber' },
     { title: '交点坐标顺序', detail: '横纵坐标读反，步骤正确但答案写反。', ratio: 14, tone: 'blue' },
   ],
-  feedback: 'AI 已按 rubric 完成 42 份预批，建议教师重点复核 6 份“步骤跳跃”的作业，不需要逐份重改。',
+  feedback: '系统已按 rubric 完成 42 份预批，建议教师重点复核 6 份“步骤跳跃”的作业，不需要逐份重改。',
 }
 
 const managerAnalysis: ManagerAnalysisData = {
@@ -297,9 +297,9 @@ const classHours: ClassHoursData = {
 }
 
 const resources: ResourceItem[] = [
-  { id: 'r1', title: '一次函数图像平移 · 3 分钟微课', type: '微课', subject: '数学', grade: '八年级', status: '已审核', tags: ['课标对齐', 'AI 辅助', '可离线'], tone: 'teal', usage: '本周使用 126 次' },
+  { id: 'r1', title: '一次函数图像平移 · 3 分钟微课', type: '微课', subject: '数学', grade: '八年级', status: '已审核', tags: ['课标对齐', '智能辅助', '可离线'], tone: 'teal', usage: '本周使用 126 次' },
   { id: 'r2', title: '分段计费：从账单到函数', type: '项目', subject: '数学', grade: '八年级', status: '已审核', tags: ['真实情境', '迁移', 'rubric'], tone: 'amber', usage: '本周使用 48 次' },
-  { id: 'r3', title: '电路图识别 · 交互练习', type: '互动题', subject: '物理', grade: '八年级', status: '待审核', tags: ['AI 生成', '需复核'], tone: 'coral', usage: '待发布' },
+  { id: 'r3', title: '电路图识别 · 交互练习', type: '互动题', subject: '物理', grade: '八年级', status: '待审核', tags: ['智能生成', '需复核'], tone: 'coral', usage: '待发布' },
   { id: 'r4', title: '方程式配平 · 错因微课', type: '微课', subject: '化学', grade: '九年级', status: '已审核', tags: ['错因', '变式', '短时'], tone: 'blue', usage: '本周使用 73 次' },
   { id: 'r5', title: '校园节能方案 · 项目包', type: '项目', subject: '跨学科', grade: '八年级', status: '已审核', tags: ['PBL', '数据', '协作'], tone: 'violet', usage: '本周使用 31 次' },
   { id: 'r6', title: '一次函数 · 分层作业模板', type: '作业', subject: '数学', grade: '八年级', status: '待审核', tags: ['分层', '校本', 'rubric'], tone: 'teal', usage: '待发布' },
@@ -407,7 +407,7 @@ let courses: AICourse[] = [
     completion: 69,
     description: '从学情出发生成教案初稿，再用“错因—任务—出口卡”的结构做二次设计。',
     aiSummary: 'AI 适合做素材整理和初稿，不适合替代教师对课堂的判断。',
-    objectives: ['用学情生成分层任务', '识别 AI 初稿里的空泛表述', '设计一个可观察的课堂出口卡'],
+    objectives: ['用学情生成分层任务', '识别 系统初稿里的空泛表述', '设计一个可观察的课堂出口卡'],
     videoLabel: '5 段微视频 · 备课示范',
     updated: '本周',
   },
@@ -476,7 +476,7 @@ const trafficData: TrafficData = {
   services: [
     { name: '页面与静态资源', requests: '112.4 万', bandwidth: '184 GB', latency: '42 ms', errorRate: '0.18%', tone: 'teal' },
     { name: '学习数据 API', requests: '38.6 万', bandwidth: '62 GB', latency: '86 ms', errorRate: '0.32%', tone: 'blue' },
-    { name: 'AI 导师 / 课程摘要', requests: '18.2 万', bandwidth: '41 GB', latency: '1.4 s', errorRate: '0.64%', tone: 'amber' },
+    { name: '学习导师 / 课程摘要', requests: '18.2 万', bandwidth: '41 GB', latency: '1.4 s', errorRate: '0.64%', tone: 'amber' },
     { name: '视频与对象存储', requests: '9.8 万', bandwidth: '31 GB', latency: '120 ms', errorRate: '0.21%', tone: 'violet' },
     { name: '导出与报表任务', requests: '5.2 万', bandwidth: '8 GB', latency: '2.2 s', errorRate: '0.18%', tone: 'coral' },
   ],
@@ -486,7 +486,7 @@ const trafficData: TrafficData = {
     { label: '对象存储', used: 78.4, total: 120, unit: 'GB', tone: 'blue' },
   ],
   alerts: [
-    { level: 'warning', title: 'AI 导师晚高峰延迟上升', detail: '19:00–21:00 P95 延迟 2.6s，建议开启流式响应与结果缓存。', time: '今天 20:10' },
+    { level: 'warning', title: '学习导师晚高峰延迟上升', detail: '19:00–21:00 P95 延迟 2.6s，建议开启流式响应与结果缓存。', time: '今天 20:10' },
     { level: 'info', title: '视频带宽接近月度 65%', detail: '按当前趋势，月底预计使用 462GB，仍在配额内。', time: '今天 18:40' },
     { level: 'critical', title: '导出任务堆积 3 个', detail: '课时统计导出队列等待超过 5 分钟，建议扩容 worker。', time: '今天 16:22' },
   ],
