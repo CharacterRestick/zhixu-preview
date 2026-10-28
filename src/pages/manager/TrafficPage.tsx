@@ -104,7 +104,7 @@ export function TrafficPage() {
               <button className={range === '7' ? 'is-active' : ''} onClick={() => setRange('7')}>7 天</button>
               <button className={range === '30' ? 'is-active' : ''} onClick={() => setRange('30')}>30 天</button>
             </div>
-            <Button variant="secondary" size="sm" onClick={() => toast('已刷新：数据为演示快照')}><RefreshCw size={14} /> 刷新</Button>
+            <Button variant="secondary" size="sm" onClick={() => toast('监控数据已刷新')}><RefreshCw size={14} /> 刷新</Button>
             <Button size="sm" onClick={() => toast('用量报告导出会在接后端后开放')}><Download size={14} /> 导出</Button>
           </>
         }

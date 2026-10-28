@@ -58,7 +58,7 @@ export function AppShell({ navItems, children }: { navItems: NavItem[]; children
 
   const profile = session ?? {
     name: '知序用户',
-    detail: '预览身份',
+    detail: '登录身份',
     avatar: '知',
     roleLabel: '访客',
     school: '',

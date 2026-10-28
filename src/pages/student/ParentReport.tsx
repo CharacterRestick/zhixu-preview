@@ -95,11 +95,11 @@ export function ParentReport() {
         <Card className="zx-contract-card">
           <span className="zx-eyebrow">USAGE AGREEMENT</span>
           <h3>使用契约，不是监控</h3>
-          <p>家长可以设置使用时段、总时长与 AI 功能范围；孩子也参与制定。周报看趋势，不看原始聊天。</p>
+          <p>家长可以设置使用时段、总时长与学习辅助范围；孩子也参与制定。周报看趋势，不看原始聊天。</p>
           <div className="zx-contract-chips">
             <span>工作日 40 分钟</span>
             <span>21:30 后不推送</span>
-            <span>AI 只给提示</span>
+            <span>只给提示，不给答案</span>
           </div>
           <Button variant="secondary" size="sm" onClick={() => toast('契约编辑会在接后端后开放')}>调整契约</Button>
         </Card>

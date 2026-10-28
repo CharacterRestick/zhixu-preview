@@ -1,4 +1,13 @@
-import type { AICourse, ChatMessage, CourseCatalogData, TrafficData } from './types'
+import type {
+  AICourse,
+  ChatMessage,
+  CourseCatalogData,
+  TeacherDraft,
+  TeacherDirectoryData,
+  TeacherRecord,
+  TeacherScheduleData,
+  TrafficData,
+} from './types'
 import type { Role, Session } from '../auth/types'
 
 const baseUrl = (import.meta.env.VITE_API_BASE_URL ?? '/api/v1').replace(/\/$/, '')
@@ -91,4 +100,12 @@ export const httpApi = {
   toggleCourseStatus: (id: string) =>
     request<AICourse>(`/manager/courses/${id}/publish`, { method: 'PATCH' }),
   getTrafficOverview: () => request<TrafficData>('/manager/traffic'),
+  getTeacherSchedule: () => request<TeacherScheduleData>('/manager/schedule'),
+  getTeacherDirectory: () => request<TeacherDirectoryData>('/manager/teachers'),
+  createTeacher: (payload: TeacherDraft) =>
+    request<TeacherRecord>('/manager/teachers', { method: 'POST', body: JSON.stringify(payload) }),
+  updateTeacher: (id: string, payload: TeacherDraft) =>
+    request<TeacherRecord>(`/manager/teachers/${id}`, { method: 'PATCH', body: JSON.stringify(payload) }),
+  toggleTeacherStatus: (id: string) =>
+    request<TeacherRecord>(`/manager/teachers/${id}/status`, { method: 'PATCH' }),
 }

@@ -38,9 +38,8 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
   const login = useCallback((role: Role) => {
     const nextSession: Session = { role, ...ROLE_META[role] }
-    // 预览版使用 sessionStorage 模拟登录态。
-    // 接后端时改为 POST /api/v1/auth/login（HttpOnly Cookie），
-    // 再由 GET /api/v1/auth/session 恢复会话，见 docs/api-contract.md。
+    // 前端会话占位：接入统一身份服务后，改为 POST /api/v1/auth/login，
+    // 使用 HttpOnly Cookie，并由 GET /api/v1/auth/session 恢复会话。
     sessionStorage.setItem(STORAGE_KEY, JSON.stringify(nextSession))
     setSession(nextSession)
     return nextSession

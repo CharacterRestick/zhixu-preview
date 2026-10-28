@@ -53,7 +53,7 @@ Set-Cookie: __Host-zx_session=<opaque-id>;
 | 教师 | 手机号/邮箱 + 密码；学校 SSO 可选 |
 | 管理者 | 手机号/邮箱 + 密码 + 学校组织 |
 
-> 预览版的四张身份卡片只是模拟登录，不发送密码；正式版由后端完成认证。
+> 前端的四张身份卡片用于本地开发，不发送密码；正式版由学校统一身份服务完成认证。
 
 ## 3. 角色与权限
 
@@ -61,10 +61,12 @@ Set-Cookie: __Host-zx_session=<opaque-id>;
 
 | 权限 | 学生 | 家长 | 教师 | 管理者 |
 |---|---:|---:|---:|---:|
-| 学生首页 / 学习地图 / AI 导师 / 学生学科分析 / 项目成长 | ✓ |  |  |  |
+| 学生首页 / 学习地图 / 学习导师 / 学生学科分析 / 项目成长 | ✓ |  |  |  |
 | 家长周报 / 家长学科分析 |  | ✓ |  |  |
 | AI 课程学习 | ✓ | ✓ | ✓（只读） | ✓ |
 | 管理者总览 / 备课课堂 / 作业学情 / 学科分析 / 课时统计 / 资源中心 |  |  | ✓ | ✓ |
+| 排课日程 / 学生人数 / 剩余课时 |  |  | ✓ | ✓ |
+| 教师信息名册、新增、编辑、状态调整 |  |  |  | ✓ |
 | 课程发布、下架、可见范围 |  |  |  | ✓ |
 | 平台流量、配额、告警 |  |  |  | ✓ |
 | 成员、角色、审计（后续） |  |  |  | ✓ |
@@ -146,6 +148,11 @@ POST /api/v1/family/bind
 | GET | `/manager/subject-analysis` | 学科分析 | 教师 / 管理者 |
 | GET | `/manager/class-hours` | 课时统计 | 教师 / 管理者 |
 | GET | `/manager/resources` | 资源中心 | 教师 / 管理者 |
+| GET | `/manager/schedule` | 排课、学生人数、班级剩余课时 | 教师 / 管理者 |
+| GET | `/manager/teachers` | 教师名册 | 管理者 |
+| POST | `/manager/teachers` | 新增教师 | 管理者 |
+| PATCH | `/manager/teachers/:id` | 编辑教师信息 | 管理者 |
+| PATCH | `/manager/teachers/:id/status` | 在岗 / 休假状态调整 | 管理者 |
 | GET | `/courses?audience=student` | 课程目录 | 登录用户 |
 | GET | `/manager/courses` | 课程管理列表 | 教师只读 / 管理者 |
 | POST | `/manager/courses` | 发布课程 | 管理者 |
@@ -200,6 +207,55 @@ POST /api/v1/uploads/presign
 { "filename": "course.mp4", "contentType": "video/mp4", "purpose": "course" }
 -> { "uploadUrl": "...", "fileId": "file_01", "expiresIn": 600 }
 ```
+
+### 教师排课与课时契约
+
+```ts
+interface TeacherScheduleData {
+  summary: { label: string; value: string; detail: string; tone: Tone }[]
+  week: { label: string; date: string; isToday: boolean }[]
+  lessons: {
+    id: string; day: number; start: string; end: string
+    title: string; className: string; subject: string; room: string; tone: Tone
+  }[]
+  classes: {
+    name: string; students: number; subject: string
+    planned: number; done: number; remaining: number; tone: Tone
+  }[]
+  notes: { title: string; detail: string; time: string }[]
+  totalStudents: number
+  totalRemainingHours: number
+}
+```
+
+- `day` 使用 0–6 表示周一到周日。
+- `remaining = planned - done`，班级合计必须与 `totalRemainingHours` 一致。
+- 管理者看全校范围；教师只看自己任课班级。
+
+### 教师名册契约
+
+```ts
+interface TeacherRecord {
+  id: string
+  name: string
+  employeeNo: string
+  subject: string
+  title: string
+  phone: string
+  email: string
+  classes: string[]
+  weeklyHours: number
+  remainingHours: number
+  status: 'active' | 'leave' | 'pending'
+  joinedAt: string
+  avatar: string
+  tone: Tone
+  lastActive: string
+}
+```
+
+新增/编辑请求包含 `name`、`employeeNo`、`subject`、`title`、`phone`、`email`、`classes`（顿号或逗号分隔字符串）、`weeklyHours`、`remainingHours`、`status`。  
+只有管理者可写；教师读取自己的信息时由后端过滤字段。
 
 ### 流量监控契约
 

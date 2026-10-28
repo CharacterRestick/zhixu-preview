@@ -16,6 +16,8 @@ export type Permission =
   | 'manager.analysis'
   | 'manager.hours'
   | 'manager.resources'
+  | 'manager.schedule'
+  | 'manager.teachers'
   | 'manager.courses.view'
   | 'manager.courses.manage'
   | 'manager.traffic'

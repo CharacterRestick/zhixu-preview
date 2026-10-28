@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { ArrowRight, ArrowUpRight, MousePointer2, ShieldCheck, Sparkles } from 'lucide-react'
+import { ArrowRight, ArrowUpRight, Database, KeyRound, MousePointer2, ShieldCheck, Sparkles } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { Brand } from '../components/Brand'
 import { OrbitVisual } from '../components/OrbitVisual'
@@ -22,12 +22,12 @@ export function Landing() {
         <nav className="zx-landing-links" aria-label="页面导航">
           <a href="#why">为什么是知序</a>
           <a href="#two-ends">四种身份</a>
-          <a href="#handoff">后端准备</a>
+          <a href="#handoff">安全与权限</a>
         </nav>
         <div className="zx-landing-nav-right">
-          <span className="zx-preview-pill"><span /> PREVIEW · MOCK DATA</span>
+          <span className="zx-edition-pill"><span /> SCHOOL EDITION · V1.3</span>
           <Link to="/login" className="zx-btn zx-btn-dark zx-btn-sm">
-            进入预览 <ArrowUpRight size={15} />
+            进入平台 <ArrowUpRight size={15} />
           </Link>
         </div>
       </header>
@@ -60,8 +60,8 @@ export function Landing() {
               </Link>
             </motion.div>
             <motion.div className="zx-hero-note" variants={fadeUp} initial="hidden" animate="show" custom={4}>
-              <span><MousePointer2 size={13} /> 可点击的真实页面</span>
-              <span><ShieldCheck size={13} /> 已预留后端 API 层</span>
+              <span><MousePointer2 size={13} /> 完整可用的工作空间</span>
+              <span><ShieldCheck size={13} /> 学校级权限与数据隔离</span>
             </motion.div>
           </div>
           <motion.div
@@ -136,21 +136,25 @@ export function Landing() {
 
         <section className="zx-landing-handoff" id="handoff">
           <div className="zx-handoff-copy">
-            <span className="zx-eyebrow">FRONTEND READY FOR BACKEND</span>
-            <h2>页面是预览，<br />接口不是临时拼的。</h2>
-            <p>所有数据都通过 <code>src/lib/api</code> 访问。预览读 mock，接后端时切换一个环境变量即可，页面组件不需要改。</p>
+            <span className="zx-eyebrow">SCHOOL-READY PLATFORM</span>
+            <h2>数据留在学校，<br />权限落在角色。</h2>
+            <p>学生、家长、教师、管理者各自进入自己的工作空间。页面通过统一数据服务访问，敏感信息不进入浏览器，权限由学校统一配置。</p>
           </div>
-          <div className="zx-handoff-code" aria-label="前后端切换示例">
-            <div className="zx-code-dots"><span /><span /><span /></div>
-            <pre>{`# 预览
-VITE_USE_MOCK=true
-
-# 接后端
-VITE_USE_MOCK=false
-VITE_API_BASE_URL=/api/v1`}</pre>
-            <div className="zx-code-foot">
-              <span>已预留 19 个接口</span>
-              <span>Typed API layer</span>
+          <div className="zx-handoff-principles">
+            <div>
+              <ShieldCheck size={18} />
+              <strong>角色隔离</strong>
+              <span>不同身份看到不同菜单、班级与数据范围。</span>
+            </div>
+            <div>
+              <KeyRound size={18} />
+              <strong>统一认证</strong>
+              <span>学校账号、家长邀请码与 SSO 统一接入。</span>
+            </div>
+            <div>
+              <Database size={18} />
+              <strong>数据可追溯</strong>
+              <span>调课、课时、课程发布与权限变更留痕。</span>
             </div>
           </div>
         </section>
@@ -158,8 +162,8 @@ VITE_API_BASE_URL=/api/v1`}</pre>
 
       <footer className="zx-landing-footer">
         <Brand />
-        <span>知序 · 前端预览 V1.2</span>
-        <span>页面内数据为演示，不包含真实学生信息</span>
+        <span>知序 · V1.3</span>
+        <span>正式部署后接入学校数据与统一身份服务</span>
       </footer>
     </div>
   )

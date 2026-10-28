@@ -21,6 +21,7 @@ export const ROLE_PERMISSIONS: Record<Role, Permission[]> = {
     'manager.analysis',
     'manager.hours',
     'manager.resources',
+    'manager.schedule',
     'manager.courses.view',
   ],
   manager: [
@@ -30,6 +31,8 @@ export const ROLE_PERMISSIONS: Record<Role, Permission[]> = {
     'manager.analysis',
     'manager.hours',
     'manager.resources',
+    'manager.schedule',
+    'manager.teachers',
     'manager.courses.view',
     'manager.courses.manage',
     'manager.traffic',
@@ -77,7 +80,7 @@ export const ROLE_META: Record<Role, Omit<Session, 'role'>> = {
   },
 }
 
-export const DEMO_ROLES: { role: Role; title: string; description: string }[] = [
+export const ROLE_OPTIONS: { role: Role; title: string; description: string }[] = [
   { role: 'student', title: '学生', description: '学习地图、AI 导师、学科分析、AI 课程' },
   { role: 'parent', title: '家长', description: '成长周报、陪伴建议、AI 课程' },
   { role: 'teacher', title: '教师', description: '备课、课堂、作业、学情与课程学习' },

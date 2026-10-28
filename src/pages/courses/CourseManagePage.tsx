@@ -276,9 +276,9 @@ export function CourseManagePage() {
             <UploadCloud size={22} />
             <div>
               <strong>上传课程视频</strong>
-              <span>演示版不上传文件；接入对象存储后支持 MP4、HLS 和自动字幕。</span>
+              <span>正式部署后支持 MP4、HLS 与自动字幕，视频直传对象存储。</span>
             </div>
-            <Button variant="secondary" size="sm" onClick={() => toast('演示版：视频上传会在接后端后开放')}>选择文件</Button>
+            <Button variant="secondary" size="sm" onClick={() => toast('视频上传服务接入后开放')}>选择文件</Button>
           </div>
         </div>
       </Modal>

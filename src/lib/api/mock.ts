@@ -14,6 +14,10 @@ import type {
   ParentReportData,
   ResourceItem,
   StudentDashboard,
+  TeacherDirectoryData,
+  TeacherDraft,
+  TeacherRecord,
+  TeacherScheduleData,
   TeachingData,
   TrafficData,
   TutorData,
@@ -404,7 +408,7 @@ let courses: AICourse[] = [
     description: '从学情出发生成教案初稿，再用“错因—任务—出口卡”的结构做二次设计。',
     aiSummary: 'AI 适合做素材整理和初稿，不适合替代教师对课堂的判断。',
     objectives: ['用学情生成分层任务', '识别 AI 初稿里的空泛表述', '设计一个可观察的课堂出口卡'],
-    videoLabel: '5 段微视频 · 备课示例',
+    videoLabel: '5 段微视频 · 备课示范',
     updated: '本周',
   },
   {
@@ -486,6 +490,83 @@ const trafficData: TrafficData = {
     { level: 'info', title: '视频带宽接近月度 65%', detail: '按当前趋势，月底预计使用 462GB，仍在配额内。', time: '今天 18:40' },
     { level: 'critical', title: '导出任务堆积 3 个', detail: '课时统计导出队列等待超过 5 分钟，建议扩容 worker。', time: '今天 16:22' },
   ],
+}
+
+const teacherSchedule: TeacherScheduleData = {
+  summary: [
+    { label: '学生总数', value: '128', detail: '3 个教学班', tone: 'teal' },
+    { label: '本周课时', value: '18', detail: '已完成 12 节', tone: 'blue' },
+    { label: '剩余课时', value: '28', detail: '按当前进度可用 4 周', tone: 'amber' },
+    { label: '待确认', value: '2', detail: '调课 / 代课', tone: 'coral' },
+  ],
+  week: [
+    { label: '周一', date: '10/26', isToday: false },
+    { label: '周二', date: '10/27', isToday: false },
+    { label: '周三', date: '10/28', isToday: true },
+    { label: '周四', date: '10/29', isToday: false },
+    { label: '周五', date: '10/30', isToday: false },
+    { label: '周六', date: '10/31', isToday: false },
+    { label: '周日', date: '11/01', isToday: false },
+  ],
+  lessons: [
+    { id: 'l1', day: 0, start: '08:00', end: '08:45', title: '一次函数 · 图像与性质', className: '八年级 3 班', subject: '数学', room: 'A-302', tone: 'teal' },
+    { id: 'l2', day: 0, start: '10:00', end: '10:45', title: '一次函数 · 分层练习', className: '八年级 5 班', subject: '数学', room: 'A-305', tone: 'blue' },
+    { id: 'l3', day: 0, start: '14:00', end: '14:45', title: '课后答疑', className: '八年级 3 班', subject: '数学', room: '答疑室', tone: 'amber' },
+    { id: 'l4', day: 1, start: '08:00', end: '08:45', title: '图像平移', className: '八年级 5 班', subject: '数学', room: 'A-305', tone: 'blue' },
+    { id: 'l5', day: 1, start: '10:00', end: '10:45', title: '待定系数法', className: '八年级 3 班', subject: '数学', room: 'A-302', tone: 'teal' },
+    { id: 'l6', day: 1, start: '15:00', end: '16:00', title: '数学组教研', className: '数学组', subject: '教研', room: '会议室 2', tone: 'violet' },
+    { id: 'l7', day: 2, start: '08:00', end: '08:45', title: '一次函数 · 图像与性质', className: '八年级 3 班', subject: '数学', room: 'A-302', tone: 'teal' },
+    { id: 'l8', day: 2, start: '10:00', end: '10:45', title: '一次函数 · 分层练习', className: '八年级 5 班', subject: '数学', room: 'A-305', tone: 'blue' },
+    { id: 'l9', day: 2, start: '13:30', end: '14:15', title: '分层辅导', className: '八年级 2 班', subject: '数学', room: 'A-201', tone: 'amber' },
+    { id: 'l10', day: 2, start: '15:00', end: '16:00', title: '备课与作业设计', className: '个人安排', subject: '备课', room: '教师办公室', tone: 'violet' },
+    { id: 'l11', day: 3, start: '08:00', end: '08:45', title: '方案选择', className: '八年级 3 班', subject: '数学', room: 'A-302', tone: 'teal' },
+    { id: 'l12', day: 3, start: '10:00', end: '10:45', title: '方案选择', className: '八年级 5 班', subject: '数学', room: 'A-305', tone: 'blue' },
+    { id: 'l13', day: 3, start: '14:00', end: '15:00', title: '阶段小测', className: '八年级 3 班', subject: '数学', room: 'A-302', tone: 'amber' },
+    { id: 'l14', day: 4, start: '08:00', end: '08:45', title: '一次函数应用', className: '八年级 5 班', subject: '数学', room: 'A-305', tone: 'blue' },
+    { id: 'l15', day: 4, start: '10:00', end: '10:45', title: '一次函数应用', className: '八年级 3 班', subject: '数学', room: 'A-302', tone: 'teal' },
+    { id: 'l16', day: 4, start: '15:30', end: '16:15', title: '家长沟通', className: '八年级 3 班', subject: '沟通', room: '线上', tone: 'coral' },
+    { id: 'l17', day: 5, start: '09:00', end: '10:30', title: '校园节能项目指导', className: '项目组', subject: '项目', room: '创新实验室', tone: 'teal' },
+  ],
+  classes: [
+    { name: '八年级 3 班', students: 42, subject: '数学', planned: 48, done: 32, remaining: 16, tone: 'teal' },
+    { name: '八年级 5 班', students: 45, subject: '数学', planned: 48, done: 40, remaining: 8, tone: 'blue' },
+    { name: '八年级 2 班', students: 41, subject: '数学', planned: 44, done: 40, remaining: 4, tone: 'amber' },
+  ],
+  notes: [
+    { title: '周三第 5 节 · 3 班调课', detail: '与物理组对调，已同步课时记录', time: '今天 09:12' },
+    { title: '周五 · 阶段小测', detail: '提前准备答题卡与分层题', time: '周五' },
+    { title: '下周一 · 项目指导', detail: '校园节能方案需要创新实验室', time: '下周一' },
+  ],
+  totalStudents: 128,
+  totalRemainingHours: 28,
+}
+
+let teacherRecords: TeacherRecord[] = [
+  { id: 't1', name: '李明', employeeNo: 'T2021001', subject: '数学', title: '数学教师', phone: '138****2106', email: 'liming@ycsy.edu.cn', classes: ['八年级 3 班', '八年级 5 班'], weeklyHours: 18, remainingHours: 24, status: 'active', joinedAt: '2021-08', avatar: '李', tone: 'teal', lastActive: '今天 08:12' },
+  { id: 't2', name: '王珂', employeeNo: 'T2018007', subject: '数学', title: '数学教师', phone: '139****7281', email: 'wangke@ycsy.edu.cn', classes: ['八年级 2 班'], weeklyHours: 16, remainingHours: 21, status: 'active', joinedAt: '2018-09', avatar: '王', tone: 'blue', lastActive: '今天 07:58' },
+  { id: 't3', name: '陈一帆', employeeNo: 'T2020013', subject: '物理', title: '物理教师', phone: '137****6630', email: 'chenyifan@ycsy.edu.cn', classes: ['八年级 1 班', '八年级 4 班'], weeklyHours: 16, remainingHours: 14, status: 'active', joinedAt: '2020-08', avatar: '陈', tone: 'violet', lastActive: '昨天 18:20' },
+  { id: 't4', name: '赵清', employeeNo: 'T2019005', subject: '化学', title: '化学教师', phone: '136****9021', email: 'zhaoqing@ycsy.edu.cn', classes: ['九年级 2 班'], weeklyHours: 15, remainingHours: 12, status: 'leave', joinedAt: '2019-03', avatar: '赵', tone: 'coral', lastActive: '10 月 20 日' },
+  { id: 't5', name: '林晓', employeeNo: 'T2022011', subject: '语文', title: '语文教师', phone: '135****3378', email: 'linxiao@ycsy.edu.cn', classes: ['八年级 3 班'], weeklyHours: 16, remainingHours: 15, status: 'active', joinedAt: '2022-08', avatar: '林', tone: 'amber', lastActive: '今天 08:30' },
+  { id: 't6', name: '周宁', employeeNo: 'T2017016', subject: '数学', title: '数学教师', phone: '133****5642', email: 'zhouning@ycsy.edu.cn', classes: ['九年级 1 班'], weeklyHours: 15, remainingHours: 14, status: 'active', joinedAt: '2017-09', avatar: '周', tone: 'teal', lastActive: '昨天 16:40' },
+  { id: 't7', name: '孙悦', employeeNo: 'T2023004', subject: '英语', title: '英语教师', phone: '131****8410', email: 'sunyue@ycsy.edu.cn', classes: ['八年级 1 班'], weeklyHours: 14, remainingHours: 18, status: 'pending', joinedAt: '2023-08', avatar: '孙', tone: 'blue', lastActive: '10 月 18 日' },
+  { id: 't8', name: '郑远', employeeNo: 'T2024002', subject: '信息科技', title: '信息科技教师', phone: '130****1158', email: 'zhengyuan@ycsy.edu.cn', classes: ['八年级 2 班'], weeklyHours: 12, remainingHours: 20, status: 'pending', joinedAt: '2024-09', avatar: '郑', tone: 'violet', lastActive: '10 月 15 日' },
+]
+
+function buildTeacherDirectory(): TeacherDirectoryData {
+  const active = teacherRecords.filter((teacher) => teacher.status === 'active').length
+  const pending = teacherRecords.filter((teacher) => teacher.status === 'pending').length
+  const subjects = Array.from(new Set(teacherRecords.map((teacher) => teacher.subject)))
+  const weekly = teacherRecords.reduce((sum, teacher) => sum + teacher.weeklyHours, 0)
+  return {
+    summary: [
+      { label: '教师总数', value: String(teacherRecords.length), detail: '本学期在册', tone: 'teal' },
+      { label: '在岗教师', value: String(active), detail: '正在承担教学任务', tone: 'blue' },
+      { label: '学科覆盖', value: String(subjects.length), detail: '按任教学科统计', tone: 'amber' },
+      { label: '待完善 / 待审', value: String(pending), detail: '资料或状态需要确认', tone: 'coral' },
+    ],
+    teachers: teacherRecords,
+    subjects,
+  }
 }
 
 export const mockApi = {
@@ -582,7 +663,7 @@ export const mockApi = {
       views: 0,
       completion: 0,
       description: draft.description,
-      aiSummary: '课程已发布，AI 摘要会在视频转写完成后自动生成。',
+      aiSummary: '课程已发布，内容摘要会在视频转写完成后自动生成。',
       objectives: ['完成课程视频上传', '补充 3 个学习目标', '设置课程受众与可见范围'],
       videoLabel: draft.videoLabel || '待上传视频',
       updated: '刚刚发布',
@@ -601,5 +682,66 @@ export const mockApi = {
   async getTrafficOverview(): Promise<TrafficData> {
     await wait(360)
     return trafficData
+  },
+  async getTeacherSchedule(): Promise<TeacherScheduleData> {
+    await wait(300)
+    return teacherSchedule
+  },
+  async getTeacherDirectory(): Promise<TeacherDirectoryData> {
+    await wait(280)
+    return buildTeacherDirectory()
+  },
+  async createTeacher(draft: TeacherDraft): Promise<TeacherRecord> {
+    await wait(520)
+    const next: TeacherRecord = {
+      id: `t-${Date.now()}`,
+      name: draft.name,
+      employeeNo: draft.employeeNo,
+      subject: draft.subject,
+      title: draft.title,
+      phone: draft.phone,
+      email: draft.email,
+      classes: draft.classes.split(/[,，、]/).map((item) => item.trim()).filter(Boolean),
+      weeklyHours: draft.weeklyHours,
+      remainingHours: draft.remainingHours,
+      status: draft.status,
+      joinedAt: '2026-10',
+      avatar: draft.name.slice(0, 1) || '师',
+      tone: draft.subject === '数学' ? 'teal' : draft.subject === '物理' ? 'blue' : draft.subject === '化学' ? 'coral' : 'violet',
+      lastActive: '刚刚',
+    }
+    teacherRecords = [next, ...teacherRecords]
+    return next
+  },
+  async updateTeacher(id: string, draft: TeacherDraft): Promise<TeacherRecord> {
+    await wait(420)
+    const index = teacherRecords.findIndex((teacher) => teacher.id === id)
+    if (index < 0) throw new Error('教师不存在')
+    const previous = teacherRecords[index]
+    const next: TeacherRecord = {
+      ...previous,
+      name: draft.name,
+      employeeNo: draft.employeeNo,
+      subject: draft.subject,
+      title: draft.title,
+      phone: draft.phone,
+      email: draft.email,
+      classes: draft.classes.split(/[,，、]/).map((item) => item.trim()).filter(Boolean),
+      weeklyHours: draft.weeklyHours,
+      remainingHours: draft.remainingHours,
+      status: draft.status,
+      avatar: draft.name.slice(0, 1) || previous.avatar,
+      lastActive: '刚刚更新',
+    }
+    teacherRecords[index] = next
+    return { ...next }
+  },
+  async toggleTeacherStatus(id: string): Promise<TeacherRecord> {
+    await wait(260)
+    const teacher = teacherRecords.find((item) => item.id === id)
+    if (!teacher) throw new Error('教师不存在')
+    teacher.status = teacher.status === 'active' ? 'leave' : 'active'
+    teacher.lastActive = '刚刚更新'
+    return { ...teacher }
   },
 }

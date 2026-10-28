@@ -191,10 +191,12 @@ export function ManagerHome() {
       </div>
 
       <div className="zx-quick-links">
+        <button onClick={() => navigate('/manager/schedule')}><span>排课与课时</span><ArrowRight size={15} /></button>
         <button onClick={() => navigate('/manager/teaching')}><span>备课与课堂</span><ArrowRight size={15} /></button>
         <button onClick={() => navigate('/manager/assignments')}><span>作业与学情</span><ArrowRight size={15} /></button>
         <button onClick={() => navigate('/manager/analysis')}><span>学科分析</span><ArrowRight size={15} /></button>
         <button onClick={() => navigate('/manager/hours')}><span>课时统计</span><ArrowRight size={15} /></button>
+        {isManager && <button onClick={() => navigate('/manager/teachers')}><span>教师管理</span><ArrowRight size={15} /></button>}
       </div>
     </div>
   )

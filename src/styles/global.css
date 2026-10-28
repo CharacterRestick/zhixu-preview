@@ -1,5 +1,5 @@
 /* =========================================================
-   知序 · design system
+   鐭ュ簭 路 design system
    warm paper / ink / teal / amber / editorial serif
    ========================================================= */
 
@@ -568,7 +568,7 @@ a {
   align-items: center;
   gap: 16px;
 }
-.zx-preview-pill {
+.zx-edition-pill {
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -581,7 +581,7 @@ a {
   font-weight: 700;
   background: rgba(251, 250, 246, 0.6);
 }
-.zx-preview-pill > span {
+.zx-edition-pill > span {
   width: 6px;
   height: 6px;
   border-radius: 50%;
@@ -3285,7 +3285,7 @@ a {
 }
 .zx-quick-links {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(135px, 1fr));
   gap: 8px;
 }
 .zx-quick-links button {
@@ -4347,7 +4347,7 @@ a {
 
 @media (max-width: 560px) {
   .zx-landing-nav { height: 76px; }
-  .zx-preview-pill { display: none; }
+  .zx-edition-pill { display: none; }
   .zx-hero h1 { font-size: 56px; }
   .zx-hero-lead { font-size: 14px; }
   .zx-hero-actions { flex-direction: column; align-items: stretch; }
@@ -4819,7 +4819,7 @@ html.zx-static .zx-spark-line {
 }
 
 /* =========================================================
-   navigation v2 · groups, progress, mobile sheet
+   navigation v2 路 groups, progress, mobile sheet
    ========================================================= */
 .zx-scroll-progress {
   position: fixed;
@@ -4953,7 +4953,7 @@ html.zx-static .zx-spark-line {
 }
 
 /* =========================================================
-   AI courses · learning
+   AI courses 路 learning
    ========================================================= */
 .zx-course-page { display: flex; flex-direction: column; gap: 22px; }
 .zx-course-top {
@@ -5397,7 +5397,7 @@ html.zx-static .zx-spark-line {
 .zx-course-note p { margin: 3px 0 0; font-size: 8px; line-height: 1.55; }
 
 /* =========================================================
-   AI courses · management
+   AI courses 路 management
    ========================================================= */
 .zx-permission-chip {
   display: inline-flex;
@@ -5793,7 +5793,7 @@ html.zx-static .zx-spark-line {
 .zx-traffic-note p { margin: 0; font-size: 8px; line-height: 1.55; }
 
 /* =========================================================
-   responsive · courses + traffic + nav
+   responsive 路 courses + traffic + nav
    ========================================================= */
 @media (max-width: 1180px) {
   .zx-course-top { grid-template-columns: minmax(0, 1.3fr) minmax(250px, .7fr); }
@@ -5872,3 +5872,364 @@ html.zx-static .zx-stage-progress span { transition: none !important; }
 html.zx-static .zx-skeleton { animation: none !important; }
 
 .zx-upload-box.is-full { grid-column: 1 / -1; }
+
+/* =========================================================
+   teaching schedule / teacher directory
+   ========================================================= */
+.zx-schedule-page,
+.zx-teacher-directory-page { display: flex; flex-direction: column; gap: 14px; }
+.zx-schedule-summary,
+.zx-teacher-summary { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.zx-metric-card {
+  --summary-tone: #0f766e;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+  color: var(--ink);
+  min-height: 112px;
+  padding: 14px 15px 13px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: var(--paper-2);
+  text-align: left;
+  transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.zx-metric-card.tone-blue { --summary-tone: #4d7ea8; }
+.zx-metric-card.tone-amber { --summary-tone: #d97706; }
+.zx-metric-card.tone-coral { --summary-tone: #d96c5f; }
+.zx-metric-card.tone-violet { --summary-tone: #7d6aa8; }
+.zx-metric-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--summary-tone) 30%, transparent);
+  box-shadow: var(--shadow-sm);
+}
+.zx-metric-card > span { color: var(--muted); font-size: 8px; }
+.zx-metric-card strong {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--serif);
+  font-size: 27px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+.zx-metric-card small { display: block; margin-top: 6px; color: var(--muted-2); font-size: 8px; }
+.zx-metric-card em {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  margin-top: auto;
+  padding-top: 9px;
+  color: var(--summary-tone);
+  font-size: 8px;
+  font-style: normal;
+  font-weight: 700;
+}
+.zx-metric-card::after {
+  content: "";
+  position: absolute;
+  right: -20px;
+  bottom: -30px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: color-mix(in srgb, var(--summary-tone) 8%, transparent);
+}
+.zx-schedule-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(260px, 0.52fr);
+  gap: 14px;
+  align-items: start;
+}
+.zx-calendar-card { padding: 20px; }
+.zx-calendar-legend {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  color: var(--muted-2);
+  font-size: 8px;
+}
+.zx-calendar-legend span { display: inline-flex; align-items: center; gap: 4px; }
+.zx-calendar-legend i { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); }
+.zx-calendar-legend i.is-other { background: var(--violet); }
+.zx-week-calendar {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 16px;
+}
+.zx-cal-day {
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: rgba(251, 250, 246, 0.5);
+  overflow: hidden;
+}
+.zx-cal-day.is-today {
+  border-color: rgba(15, 118, 110, 0.3);
+  background: rgba(15, 118, 110, 0.035);
+  box-shadow: 0 0 0 1px rgba(15, 118, 110, 0.06);
+}
+.zx-cal-dayhead {
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  padding: 8px 8px 6px;
+  border-bottom: 1px solid var(--line);
+}
+.zx-cal-dayhead span { color: var(--muted); font-size: 8px; font-weight: 700; }
+.zx-cal-dayhead strong { color: var(--ink); font-size: 10px; font-family: var(--serif); }
+.zx-cal-dayhead em {
+  margin-left: auto;
+  padding: 2px 5px;
+  border-radius: 999px;
+  background: var(--teal);
+  color: white;
+  font-size: 6px;
+  font-style: normal;
+}
+.zx-cal-daybody { display: flex; flex-direction: column; gap: 5px; padding: 6px; min-height: 295px; }
+.zx-cal-empty { margin: auto; color: var(--muted-2); font-size: 8px; }
+.zx-cal-lesson {
+  --lesson-tone: #0f766e;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  width: 100%;
+  padding: 7px 7px 6px;
+  border: 1px solid transparent;
+  border-left: 2px solid var(--lesson-tone);
+  border-radius: 7px;
+  background: color-mix(in srgb, var(--lesson-tone) 7%, white 93%);
+  text-align: left;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.zx-cal-lesson:hover { transform: translateY(-1px); box-shadow: 0 5px 12px rgba(14,31,43,.08); }
+.zx-cal-lesson.tone-blue { --lesson-tone: #4d7ea8; }
+.zx-cal-lesson.tone-amber { --lesson-tone: #d97706; }
+.zx-cal-lesson.tone-coral { --lesson-tone: #d96c5f; }
+.zx-cal-lesson.tone-violet { --lesson-tone: #7d6aa8; }
+.zx-cal-time { color: var(--lesson-tone); font-size: 6px; font-weight: 800; letter-spacing: 0.02em; }
+.zx-cal-lesson strong { display: block; max-width: 100%; font-size: 8px; line-height: 1.35; }
+.zx-cal-lesson small { color: var(--muted); font-size: 7px; line-height: 1.3; }
+.zx-cal-lesson em { display: inline-flex; align-items: center; gap: 2px; color: var(--muted-2); font-size: 6px; font-style: normal; margin-top: 2px; }
+.zx-schedule-side { display: flex; flex-direction: column; gap: 12px; }
+.zx-schedule-side .zx-card { padding: 18px; }
+.zx-schedule-notes { display: flex; flex-direction: column; margin-top: 8px; }
+.zx-schedule-note {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+  text-align: left;
+}
+.zx-schedule-note:first-child { border-top: 0; }
+.zx-schedule-note > div { min-width: 0; flex: 1; }
+.zx-schedule-note strong { display: block; font-size: 9px; }
+.zx-schedule-note p { margin: 3px 0 0; color: var(--muted); font-size: 8px; line-height: 1.45; }
+.zx-schedule-note small { display: block; margin-top: 4px; color: var(--muted-2); font-size: 7px; }
+.zx-schedule-note svg { color: var(--muted-2); flex: 0 0 auto; margin-top: 2px; }
+.zx-note-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--amber); margin-top: 4px; flex: 0 0 auto; }
+.zx-block-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 12px;
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(251, 250, 246, 0.7);
+  color: var(--teal);
+  font-size: 8px;
+  font-weight: 700;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.zx-block-link:hover { background: white; border-color: rgba(15,118,110,.28); }
+.zx-schedule-tip {
+  background:
+    radial-gradient(180px 150px at 100% 0, rgba(217,119,6,.1), transparent 70%),
+    var(--paper-2);
+}
+.zx-schedule-tip h3 { margin: 9px 0 8px; font-family: var(--serif); font-size: 20px; line-height: 1.3; letter-spacing: -0.03em; }
+.zx-schedule-tip p { margin: 0; color: var(--muted); font-size: 9px; line-height: 1.6; }
+.zx-roster-card { padding: 20px; }
+.zx-class-roster { display: flex; flex-direction: column; margin-top: 10px; }
+.zx-class-row {
+  --class-tone: #0f766e;
+  display: grid;
+  grid-template-columns: minmax(170px, 1.1fr) minmax(150px, 1fr) 95px 92px;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+}
+.zx-class-row:first-child { border-top: 0; }
+.zx-class-row.tone-blue { --class-tone: #4d7ea8; }
+.zx-class-row.tone-amber { --class-tone: #d97706; }
+.zx-class-main { display: flex; align-items: center; gap: 9px; }
+.zx-class-icon { width: 31px; height: 31px; border-radius: 9px; display: inline-flex; align-items: center; justify-content: center; background: color-mix(in srgb, var(--class-tone) 10%, transparent); color: var(--class-tone); }
+.zx-class-main strong { display: block; font-size: 10px; }
+.zx-class-main span { display: block; margin-top: 3px; color: var(--muted); font-size: 8px; }
+.zx-class-progress > div:first-child { display: flex; justify-content: space-between; gap: 8px; color: var(--muted); font-size: 8px; }
+.zx-class-progress em { color: var(--muted-2); font-style: normal; }
+.zx-progress-track { height: 4px; margin-top: 6px; border-radius: 999px; background: rgba(14,31,43,.07); overflow: hidden; }
+.zx-progress-track span { display: block; height: 100%; border-radius: inherit; background: var(--class-tone); }
+.zx-class-balance { text-align: right; }
+.zx-class-balance span { display: block; color: var(--muted-2); font-size: 7px; }
+.zx-class-balance strong { display: block; margin-top: 2px; color: var(--class-tone); font-family: var(--serif); font-size: 18px; }
+.zx-class-balance small { font-size: 8px; font-family: var(--sans); font-weight: 500; }
+.zx-row-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+.zx-row-link:hover { color: var(--teal); }
+.zx-schedule-foot,
+.zx-directory-foot {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(14,31,43,.035);
+  color: var(--muted);
+}
+.zx-schedule-foot svg,
+.zx-directory-foot svg { color: var(--teal); flex: 0 0 auto; }
+.zx-schedule-foot p,
+.zx-directory-foot p { margin: 0; font-size: 8px; line-height: 1.5; }
+.zx-schedule-foot .zx-block-link { margin-left: auto; margin-top: 0; }
+.zx-directory-foot { flex-wrap: wrap; }
+.zx-directory-foot > div { display: flex; gap: 6px; margin-left: auto; }
+.zx-directory-foot .zx-block-link { margin-top: 0; }
+
+/* teacher directory */
+.zx-teacher-card { padding: 20px; }
+.zx-teacher-filters { display: flex; gap: 7px; flex-wrap: wrap; align-items: center; }
+.zx-search-box { display: flex; align-items: center; gap: 6px; height: 31px; padding: 0 9px; border: 1px solid var(--line); border-radius: 8px; background: white; color: var(--muted); }
+.zx-search-box input { width: 160px; border: 0; outline: 0; background: transparent; color: var(--ink); font-size: 9px; }
+.zx-teacher-filters select { height: 31px; padding: 0 8px; border: 1px solid var(--line); border-radius: 8px; background: white; color: var(--muted); font-size: 8px; outline: none; }
+.zx-filter-chips { display: flex; gap: 5px; flex-wrap: wrap; margin: 12px 0 6px; }
+.zx-filter-chips button { padding: 5px 9px; border: 1px solid var(--line); border-radius: 999px; color: var(--muted); font-size: 8px; }
+.zx-filter-chips button.is-active { background: var(--ink); border-color: var(--ink); color: white; }
+.zx-teacher-table { margin-top: 4px; }
+.zx-teacher-row {
+  display: grid;
+  grid-template-columns: minmax(150px, 1.15fr) minmax(135px, 1.1fr) minmax(150px, 1.2fr) 65px 60px 82px 88px;
+  gap: 9px;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 1px solid var(--line);
+  font-size: 8px;
+}
+.zx-teacher-row.is-head { padding: 6px 0; border-top: 0; color: var(--muted-2); font-size: 7px; font-weight: 700; }
+.zx-teacher-row.is-paused { opacity: 0.62; }
+.zx-teacher-person { display: flex; align-items: center; gap: 8px; min-width: 0; }
+.zx-teacher-person .zx-avatar { width: 31px; height: 31px; font-size: 11px; }
+.zx-teacher-person .zx-avatar.tone-teal { background: rgba(15,118,110,.12); color: var(--teal); }
+.zx-teacher-person .zx-avatar.tone-blue { background: rgba(77,126,168,.12); color: var(--blue); }
+.zx-teacher-person .zx-avatar.tone-amber { background: rgba(217,119,6,.12); color: var(--amber); }
+.zx-teacher-person .zx-avatar.tone-coral { background: rgba(217,108,95,.12); color: var(--coral); }
+.zx-teacher-person .zx-avatar.tone-violet { background: rgba(125,106,168,.12); color: var(--violet); }
+.zx-teacher-person strong { display: block; font-size: 10px; }
+.zx-teacher-person small { display: block; margin-top: 2px; color: var(--muted-2); font-size: 7px; }
+.zx-teacher-classes span { display: block; color: var(--ink-2); font-size: 9px; font-weight: 700; }
+.zx-teacher-classes small { display: block; margin-top: 2px; color: var(--muted); font-size: 7px; line-height: 1.4; }
+.zx-teacher-contact { display: flex; flex-direction: column; gap: 3px; min-width: 0; }
+.zx-teacher-contact span { display: inline-flex; align-items: center; gap: 4px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; color: var(--muted); font-size: 7px; }
+.zx-teacher-contact svg { color: var(--muted-2); flex: 0 0 auto; }
+.zx-teacher-hours strong { display: block; font-family: var(--serif); font-size: 16px; line-height: 1; }
+.zx-teacher-hours small { display: block; margin-top: 3px; color: var(--muted-2); font-size: 7px; }
+.zx-teacher-last { display: block; margin-top: 4px; color: var(--muted-2); font-size: 7px; }
+.zx-teacher-actions { display: flex; flex-direction: column; gap: 5px; align-items: flex-start; }
+.zx-status-pill.is-active { background: rgba(15,118,110,.09); color: var(--teal); }
+.zx-status-pill.is-leave { background: rgba(217,119,6,.1); color: var(--amber); }
+.zx-status-pill.is-pending { background: rgba(77,126,168,.1); color: var(--blue); }
+.zx-empty-state { display: flex; flex-direction: column; align-items: center; gap: 7px; padding: 30px 20px; color: var(--muted); text-align: center; }
+.zx-empty-state svg { color: var(--muted-2); }
+.zx-empty-state strong { color: var(--ink); font-size: 11px; }
+.zx-empty-state p { margin: 0 0 5px; font-size: 9px; }
+.zx-form-note { grid-column: 1 / -1; display: flex; align-items: center; gap: 6px; color: var(--muted); font-size: 8px; }
+.zx-form-note svg { color: var(--teal); }
+
+@media (max-width: 1180px) {
+  .zx-schedule-layout { grid-template-columns: 1fr; }
+  .zx-schedule-side { display: grid; grid-template-columns: 1fr 1fr; }
+  .zx-week-calendar { overflow-x: auto; }
+  .zx-cal-day { min-width: 100px; }
+  .zx-teacher-row { grid-template-columns: minmax(145px, 1.1fr) minmax(130px, 1fr) minmax(140px, 1.1fr) 60px 55px 75px 80px; }
+}
+@media (max-width: 900px) {
+  .zx-schedule-summary, .zx-teacher-summary { grid-template-columns: 1fr 1fr; }
+  .zx-schedule-side { grid-template-columns: 1fr; }
+  .zx-class-row { grid-template-columns: 1fr 1fr; gap: 10px; }
+  .zx-class-row .zx-row-link { justify-self: end; }
+  .zx-teacher-table { overflow-x: auto; }
+  .zx-teacher-row { min-width: 760px; }
+}
+@media (max-width: 560px) {
+  .zx-schedule-summary, .zx-teacher-summary { grid-template-columns: 1fr 1fr; }
+  .zx-metric-card { min-height: 100px; padding: 12px; }
+  .zx-metric-card strong { font-size: 23px; }
+  .zx-calendar-card, .zx-roster-card, .zx-teacher-card { padding: 15px; }
+  .zx-week-calendar { grid-template-columns: repeat(7, 100px); }
+  .zx-cal-daybody { min-height: 245px; }
+  .zx-schedule-foot, .zx-directory-foot { align-items: flex-start; flex-wrap: wrap; }
+  .zx-schedule-foot .zx-block-link, .zx-directory-foot > div { margin-left: 0; }
+  .zx-class-row { grid-template-columns: 1fr; }
+  .zx-class-balance { text-align: left; }
+  .zx-class-row .zx-row-link { justify-self: start; }
+  .zx-teacher-filters { width: 100%; }
+  .zx-search-box { flex: 1; }
+  .zx-search-box input { width: 100%; }
+}
+
+.zx-edition-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 7px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--muted);
+  font-size: 8px;
+  letter-spacing: 0.12em;
+  font-weight: 700;
+  background: rgba(251, 250, 246, 0.6);
+}
+.zx-edition-pill > span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.1);
+}
+.zx-handoff-principles {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.zx-handoff-principles > div {
+  display: grid;
+  grid-template-columns: 32px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 10px;
+  padding: 14px 15px;
+  border: 1px solid var(--line);
+  border-radius: 13px;
+  background: rgba(251, 250, 246, 0.62);
+}
+.zx-handoff-principles svg { grid-row: span 2; color: var(--teal); margin-top: 2px; }
+.zx-handoff-principles strong { font-size: 10px; }
+.zx-handoff-principles span { margin-top: 3px; color: var(--muted); font-size: 9px; line-height: 1.5; }
+
+

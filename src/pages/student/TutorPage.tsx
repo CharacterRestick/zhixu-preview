@@ -157,8 +157,8 @@ export function TutorPage() {
           <Card className="zx-hint-card">
             <div className="zx-card-head compact">
               <div>
-                <span className="zx-eyebrow">HINT LADDER</span>
-                <h3>提示阶梯</h3>
+                <span className="zx-eyebrow">THINKING SCAFFOLD</span>
+                <h3>思考支架</h3>
               </div>
               <Lightbulb size={18} />
             </div>

@@ -3,6 +3,7 @@ import {
   Activity,
   BarChart3,
   BookOpen,
+  CalendarDays,
   ClipboardCheck,
   Clock3,
   FolderOpen,
@@ -12,6 +13,7 @@ import {
   Map,
   Sparkles,
   Trophy,
+  UsersRound,
   Video,
 } from 'lucide-react'
 import { Navigate, Route, Routes } from 'react-router-dom'
@@ -38,6 +40,8 @@ const ResourcesPage = lazy(() => import('./pages/manager/ResourcesPage').then((m
 const CourseLearningPage = lazy(() => import('./pages/courses/CourseLearningPage').then((module) => ({ default: module.CourseLearningPage })))
 const CourseManagePage = lazy(() => import('./pages/courses/CourseManagePage').then((module) => ({ default: module.CourseManagePage })))
 const TrafficPage = lazy(() => import('./pages/manager/TrafficPage').then((module) => ({ default: module.TrafficPage })))
+const TeacherSchedulePage = lazy(() => import('./pages/manager/TeacherSchedulePage').then((module) => ({ default: module.TeacherSchedulePage })))
+const TeacherDirectoryPage = lazy(() => import('./pages/manager/TeacherDirectoryPage').then((module) => ({ default: module.TeacherDirectoryPage })))
 
 function Page({ children }: { children: ReactNode }) {
   return <Suspense fallback={<PageSkeleton />}>{children}</Suspense>
@@ -61,6 +65,7 @@ const parentNav: NavItem[] = [
 const teachingNav: NavItem[] = [
   { to: '/manager', label: '总览', icon: LayoutDashboard, end: true, permission: 'manager.dashboard', section: 'teach' },
   { to: '/manager/teaching', label: '备课与课堂', icon: BookOpen, permission: 'manager.teaching', section: 'teach' },
+  { to: '/manager/schedule', label: '排课与课时', icon: CalendarDays, permission: 'manager.schedule', section: 'teach' },
   { to: '/manager/assignments', label: '作业与学情', icon: ClipboardCheck, permission: 'manager.assignments', section: 'teach' },
   { to: '/manager/analysis', label: '学科分析', icon: BarChart3, permission: 'manager.analysis', section: 'teach' },
   { to: '/manager/hours', label: '课时统计', icon: Clock3, permission: 'manager.hours', section: 'teach' },
@@ -81,6 +86,7 @@ const teacherNav: NavItem[] = [...teachingNav, learningNav]
 const managerNav: NavItem[] = [
   ...teachingNav,
   learningNav,
+  { to: '/manager/teachers', label: '教师管理', icon: UsersRound, permission: 'manager.teachers', section: 'admin' },
   { to: '/manager/courses', label: '课程管理', icon: Video, permission: 'manager.courses.manage', section: 'admin' },
   { to: '/manager/traffic', label: '流量监控', icon: Activity, permission: 'manager.traffic', section: 'admin', badge: '实时' },
 ]
@@ -137,10 +143,19 @@ export default function App() {
           >
             <Route index element={<Page><ManagerHome /></Page>} />
             <Route path="teaching" element={<Page><TeachingPage /></Page>} />
+            <Route path="schedule" element={<Page><TeacherSchedulePage /></Page>} />
             <Route path="assignments" element={<Page><AssignmentsPage /></Page>} />
             <Route path="analysis" element={<Page><ManagerAnalysisPage /></Page>} />
             <Route path="hours" element={<Page><ClassHoursPage /></Page>} />
             <Route path="resources" element={<Page><ResourcesPage /></Page>} />
+            <Route
+              path="teachers"
+              element={
+                <RequireAuth roles={['manager']}>
+                  <Page><TeacherDirectoryPage /></Page>
+                </RequireAuth>
+              }
+            />
             <Route path="learning" element={<Page><CourseLearningPage /></Page>} />
             <Route path="courses" element={<Page><CourseManagePage /></Page>} />
             <Route

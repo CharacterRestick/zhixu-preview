@@ -241,6 +241,77 @@ export interface CourseDraft {
   videoLabel: string
 }
 
+export interface TeacherScheduleLesson {
+  id: string
+  day: number
+  start: string
+  end: string
+  title: string
+  className: string
+  subject: string
+  room: string
+  tone: Tone
+}
+
+export interface TeacherClassStat {
+  name: string
+  students: number
+  subject: string
+  planned: number
+  done: number
+  remaining: number
+  tone: Tone
+}
+
+export interface TeacherScheduleData {
+  summary: { label: string; value: string; detail: string; tone: Tone }[]
+  week: { label: string; date: string; isToday: boolean }[]
+  lessons: TeacherScheduleLesson[]
+  classes: TeacherClassStat[]
+  notes: { title: string; detail: string; time: string }[]
+  totalStudents: number
+  totalRemainingHours: number
+}
+
+export type TeacherStatus = 'active' | 'leave' | 'pending'
+
+export interface TeacherRecord {
+  id: string
+  name: string
+  employeeNo: string
+  subject: string
+  title: string
+  phone: string
+  email: string
+  classes: string[]
+  weeklyHours: number
+  remainingHours: number
+  status: TeacherStatus
+  joinedAt: string
+  avatar: string
+  tone: Tone
+  lastActive: string
+}
+
+export interface TeacherDirectoryData {
+  summary: { label: string; value: string; detail: string; tone: Tone }[]
+  teachers: TeacherRecord[]
+  subjects: string[]
+}
+
+export interface TeacherDraft {
+  name: string
+  employeeNo: string
+  subject: string
+  title: string
+  phone: string
+  email: string
+  classes: string
+  weeklyHours: number
+  remainingHours: number
+  status: TeacherStatus
+}
+
 export interface TrafficData {
   rangeLabel: string
   summary: {

@@ -50,16 +50,16 @@ export function CourseLearningPage() {
   return (
     <div className="zx-page zx-course-page">
       <PageHeader
-        eyebrow={`AI COURSE · ${isParent ? '家长学习' : isStaff ? '教师成长' : '学生成长'}`}
+        eyebrow={`COURSE · ${isParent ? '家长学习' : isStaff ? '教师成长' : '学生成长'}`}
         title={isStaff ? '先学一遍，再决定课堂怎么用。' : '把不会，变成一段可以反复看的学习。'}
-        description={isStaff ? '管理者和教师也会是学习者。先看课程怎么讲，再决定把它放进备课、布置给学生，还是推荐给家长。' : '课程不是把课堂录一遍。每节课都有 AI 摘要、学习目标和一段可以马上用起来的小练习。'}
+        description={isStaff ? '管理者和教师也会是学习者。先看课程怎么讲，再决定把它放进备课、布置给学生，还是推荐给家长。' : '课程不是把课堂录一遍。每节课都有内容摘要、学习目标和一段可以马上用起来的小练习。'}
         actions={
           <>
             <Button variant="secondary" size="sm" onClick={() => toast('学习记录会保存在你的账号里')}>
               <Headphones size={15} /> 学习记录
             </Button>
-            <Button size="sm" onClick={() => toast('AI 会根据你的学习记录推荐下一节')}>
-              <Sparkles size={15} /> 让 AI 推荐
+            <Button size="sm" onClick={() => toast('系统会根据你的学习记录推荐下一节')}>
+              <Sparkles size={15} /> 为我推荐
             </Button>
           </>
         }
@@ -74,7 +74,7 @@ export function CourseLearningPage() {
         >
           <div className="zx-course-stage-ambient" aria-hidden="true" />
           <div className="zx-stage-topline">
-            <span className="zx-course-stage-tag"><span className="zx-live-dot" /> AI COURSE · {active.category}</span>
+            <span className="zx-course-stage-tag"><span className="zx-live-dot" /> COURSE · {active.category}</span>
             <span className="zx-course-stage-meta"><Clock3 size={13} /> {active.duration} · {active.lessons} 节</span>
           </div>
 
@@ -90,7 +90,7 @@ export function CourseLearningPage() {
           </div>
 
           <div className="zx-stage-player">
-            <button className="zx-stage-play" onClick={() => { setPlaying((value) => !value); toast('示例播放器：接入视频服务后可播放真实课程') }} aria-label={playing ? '暂停' : '播放'}>
+            <button className="zx-stage-play" onClick={() => { setPlaying((value) => !value); toast('课程视频服务接入后可播放完整视频') }} aria-label={playing ? '暂停' : '播放'}>
               {playing ? <Pause size={22} fill="currentColor" /> : <Play size={22} fill="currentColor" />}
             </button>
             <div className="zx-stage-wave" aria-hidden="true">
@@ -116,7 +116,7 @@ export function CourseLearningPage() {
 
         <aside className="zx-course-aside">
           <div className="zx-course-aside-head">
-            <span className="zx-eyebrow">AI SUMMARY</span>
+            <span className="zx-eyebrow">CONTENT SUMMARY</span>
             <span className="zx-ai-badge"><Sparkles size={12} /> 已生成</span>
           </div>
           <h3>这节课，记住一句话</h3>
@@ -129,7 +129,7 @@ export function CourseLearningPage() {
           </div>
           <div className="zx-course-outline">
             <span className="zx-eyebrow">课程目录 · {active.lessons} 节</span>
-            {['先看清自己卡在哪', '把问题改写得更具体', '用反例检验理解', '让 AI 只给提示', '回到真实任务'].slice(0, active.lessons).map((lesson, index) => (
+            {['先看清自己卡在哪', '把问题改写得更具体', '用反例检验理解', '只给提示，不给答案', '回到真实任务'].slice(0, active.lessons).map((lesson, index) => (
               <div key={lesson}>
                 <em>{String(index + 1).padStart(2, '0')}</em>
                 <span>{lesson}</span>
@@ -159,7 +159,7 @@ export function CourseLearningPage() {
       <div className="zx-course-library-head">
         <div>
           <span className="zx-eyebrow">LEARNING LIBRARY</span>
-          <h2>为你整理的 AI 课程</h2>
+          <h2>为你整理的课程</h2>
         </div>
         <span className="zx-muted-note">{data.courses.length} 节 · 按你的身份推荐</span>
       </div>
@@ -188,7 +188,7 @@ export function CourseLearningPage() {
         <BookOpen size={18} />
         <div>
           <strong>课程视频由管理者发布，教师可参与审核。</strong>
-          <p>真实版本会接入视频转写、AI 摘要、学习进度和班级完成率；当前为演示数据。</p>
+          <p>正式部署后会接入视频转写、内容摘要、学习进度和班级完成率。</p>
         </div>
       </div>
     </div>
