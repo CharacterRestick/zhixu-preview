@@ -43,9 +43,9 @@ export function TeacherSchedulePage() {
   return (
     <div className="zx-page zx-schedule-page">
       <PageHeader
-        eyebrow={isManager ? 'TEACHING OPERATIONS · 管理者' : 'TEACHING CALENDAR · 教师工作台'}
-        title={isManager ? '排课、学生、课时，一页看清。' : '这一周，先看课，再看人。'}
-        description={isManager ? '全校排课、班级人数与课时余额集中查看。异常调课和课时缺口会直接标出来。' : '你的课表、学生人数、剩余课时都在这里。少翻几个表，把时间留给课堂。'}
+        eyebrow={isManager ? 'TEACHING VIEW · 管理者' : 'TEACHING CALENDAR · 教师工作台'}
+        title={isManager ? '排课、学生、课时，集中查看。' : '这一周，先看课，再看人。'}
+        description={isManager ? '查看教师课表、班级人数与课时余额；调课与缺口会同步到课时统计。' : '你的课表、学生人数、剩余课时都在这里。少翻几个表，把时间留给课堂。'}
         actions={
           <>
             <Button variant="secondary" size="sm" onClick={() => toast('课表导出会在接入教务系统后开放')}>
